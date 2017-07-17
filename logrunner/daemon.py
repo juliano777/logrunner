@@ -23,18 +23,19 @@ class Daemon:
         self.pidfile = pidfile
 
     def daemonize(self):
-        """
+        '''
         do the UNIX double-fork magic, see Stevens' "Advanced
         Programming in the UNIX Environment" for details (ISBN 0201563177)
         http://www.erlenstar.demon.co.uk/unix/faq_2.html#SEC16
-        """
+        '''
         try:
             pid = os.fork()
             if pid > 0:
+                print(pid)
                 # exit first parent
                 sys.exit(0)
         except OSError as e:
-            sys.stderr.write("fork #1 failed: %d (%s)\n" % (e.errno, e.strerror))
+            sys.stderr.write('fork #1 failed: {} ({])\n'.format(e.errno, e.strerror))
             sys.exit(1)
 
         # decouple from parent environment
