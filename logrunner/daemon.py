@@ -26,12 +26,13 @@ class Daemon:
         Programming in the UNIX Environment" for details (ISBN 0201563177)
         http://www.erlenstar.demon.co.uk/unix/faq_2.html#SEC16
         '''
-        print(0) #===================================
 
         try:
             pid = os.fork()
+            print(0) #===================================
             if pid > 0:
                 # exit first parent
+                print(1) #===================================
                 sys.exit(0)
         except OSError as e:
             sys.stderr.write('fork #1 failed: {} ({})\n'.format(e.errno, e.strerror))
