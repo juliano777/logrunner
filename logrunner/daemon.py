@@ -4,6 +4,9 @@ import time
 import atexit
 from signal import SIGTERM
 
+import pdb
+pdb.set_trace()
+
 class Daemon:
     '''
     A generic daemon class.
@@ -39,6 +42,7 @@ class Daemon:
 
         # decouple from parent environment
         #os.chdir("/")
+        print(1) #===================================
         os.setsid()
         os.umask(0o0066)
 
