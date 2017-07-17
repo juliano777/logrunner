@@ -29,7 +29,6 @@ class Daemon:
         try:
             pid = os.fork()
             if pid > 0:
-                print(pid)
                 # exit first parent
                 sys.exit(0)
         except OSError as e:
@@ -80,7 +79,6 @@ class Daemon:
         try:
             pf = open(self.pidfile, 'r')
             pid = int(pf.read().strip())
-            print(pid)
             pf.close()
         except IOError:
             pid = None
@@ -104,7 +102,6 @@ class Daemon:
         try:
             pf = open(self.pidfile, 'r')
             pid = int(pf.read().strip())
-            print(pid)
             pf.close()
         except IOError:
             pid = None
