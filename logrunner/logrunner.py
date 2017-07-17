@@ -154,7 +154,7 @@ class LogRunner:
 			self.retire(logfile.split(self.path, 1)[1].lstrip('/'))
 
 	def stop(self):
-                from pdb import set_trace
+		from pdb import set_trace
 		set_trace()
 		# Unmount everything and stop operation
 		self.stoploop = True
