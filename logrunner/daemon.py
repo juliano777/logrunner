@@ -5,6 +5,8 @@ import atexit
 from signal import SIGTERM
 import pdb
 
+print(1) #===================================
+
 
 class Daemon:
     '''
@@ -13,6 +15,8 @@ class Daemon:
     Usage: subclass the Daemon class and override the run() method
     '''
 
+    print(2) #===================================
+
     def __init__(self, pidfile, stdin='/dev/null', stdout='/dev/stdout',
                  stderr='/dev/stdout'):
         self.stdin = stdin
@@ -20,12 +24,16 @@ class Daemon:
         self.stderr = stderr
         self.pidfile = pidfile
 
+    print(3) #===================================
+
     def daemonize(self):
         '''
         do the UNIX double-fork magic, see Stevens' "Advanced
         Programming in the UNIX Environment" for details (ISBN 0201563177)
         http://www.erlenstar.demon.co.uk/unix/faq_2.html#SEC16
         '''
+
+    print(4) #===================================
         try:
             pid = os.fork()
             if pid > 0:
