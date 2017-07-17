@@ -4,9 +4,6 @@ import time
 import atexit
 from signal import SIGTERM
 
-print(1) #===================================
-
-
 class Daemon:
     '''
     A generic daemon class.
@@ -14,7 +11,6 @@ class Daemon:
     Usage: subclass the Daemon class and override the run() method
     '''
 
-    print(2) #===================================
 
     def __init__(self, pidfile, stdin='/dev/null', stdout='/dev/stdout',
                  stderr='/dev/stdout'):
@@ -23,7 +19,6 @@ class Daemon:
         self.stderr = stderr
         self.pidfile = pidfile
 
-    print(3) #===================================
 
     def daemonize(self):
         '''
@@ -32,7 +27,6 @@ class Daemon:
         http://www.erlenstar.demon.co.uk/unix/faq_2.html#SEC16
         '''
 
-        print(4) #===================================
         try:
             pid = os.fork()
             if pid > 0:
@@ -46,6 +40,7 @@ class Daemon:
         #os.chdir("/")
         os.setsid()
         os.umask(0o0066)
+        print(0) #===================================
 
         # do second fork
         try:
