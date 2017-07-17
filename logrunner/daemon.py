@@ -63,7 +63,7 @@ class Daemon:
         atexit.register(self.delpid)
         pid = str(os.getpid())
         try:
-            open(self.pidfile,'w+').write("%s\n" % pid)
+            open(self.pidfile,'w+').write('{}'.format(pid))
         except:
             pass
 
