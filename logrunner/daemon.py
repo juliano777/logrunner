@@ -33,7 +33,7 @@ class Daemon:
                 # exit first parent
                 sys.exit(0)
         except OSError as e:
-            sys.stderr.write('fork #1 failed: {} ({])\n'.format(e.errno, e.strerror))
+            sys.stderr.write('fork #1 failed: {} ({})\n'.format(e.errno, e.strerror))
             sys.exit(1)
 
         # decouple from parent environment
@@ -80,6 +80,7 @@ class Daemon:
         try:
             pf = open(self.pidfile, 'r')
             pid = int(pf.read().strip())
+            print(pid)
             pf.close()
         except IOError:
             pid = None
