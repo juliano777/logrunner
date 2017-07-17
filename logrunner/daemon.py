@@ -4,6 +4,9 @@ import time
 import atexit
 from signal import SIGTERM
 
+import pdb
+pdb.set_trace()
+
 
 class Daemon:
     """
@@ -76,15 +79,15 @@ class Daemon:
         """
         # Check for a pidfile to see if the daemon already runs
         try:
-            pf = open(self.pidfile,'r')
+            pf = open(self.pidfile, 'r')
             pid = int(pf.read().strip())
             pf.close()
         except IOError:
             pid = None
 
         if pid:
-            message = "pidfile %s already exist. Daemon already running?\n"
-            sys.stderr.write(message % self.pidfile)
+            message = "pidfile {} already exist. Daemon already running?\n"
+            sys.stderr.write(message.format(self.pidfile))
             sys.exit(1)
 
         # Start the daemon
@@ -97,15 +100,15 @@ class Daemon:
         """
         # Get the pid from the pidfile
         try:
-            pf = open(self.pidfile,'r')
+            pf = open(self.pidfile, 'r')
             pid = int(pf.read().strip())
             pf.close()
         except IOError:
             pid = None
 
         if not pid:
-            message = "pidfile %s does not exist. Daemon not running?\n"
-            sys.stderr.write(message % self.pidfile)
+            message = "pidfile {} does not exist. Daemon not running?\n"
+            sys.stderr.write(message.format(self.pidfile))
             return # not an error in a restart
 
         # Try killing the daemon process
