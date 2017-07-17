@@ -3,6 +3,7 @@ import os
 import time
 import atexit
 from signal import SIGTERM
+import pdb
 
 
 class Daemon:
@@ -88,6 +89,8 @@ class Daemon:
             sys.stderr.write(message.format(self.pidfile))
             sys.exit(1)
 
+        pdb.set_trace()
+
         # Start the daemon
         self.daemonize()
         self.run()
@@ -100,6 +103,7 @@ class Daemon:
         try:
             pf = open(self.pidfile, 'r')
             pid = int(pf.read().strip())
+            print(pid)
             pf.close()
         except IOError:
             pid = None
