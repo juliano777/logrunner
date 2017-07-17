@@ -26,6 +26,7 @@ class Daemon:
         Programming in the UNIX Environment" for details (ISBN 0201563177)
         http://www.erlenstar.demon.co.uk/unix/faq_2.html#SEC16
         '''
+        print(0) #===================================
 
         try:
             pid = os.fork()
@@ -40,7 +41,6 @@ class Daemon:
         #os.chdir("/")
         os.setsid()
         os.umask(0o0066)
-        print(0) #===================================
 
         # do second fork
         try:
