@@ -3,7 +3,6 @@ import os
 import time
 import atexit
 from signal import SIGTERM
-import pdb
 
 print(1) #===================================
 
@@ -95,8 +94,6 @@ class Daemon:
             message = "pidfile {} already exist. Daemon already running?\n"
             sys.stderr.write(message.format(self.pidfile))
             sys.exit(1)
-
-        pdb.set_trace()
 
         # Start the daemon
         self.daemonize()
