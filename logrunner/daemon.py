@@ -30,14 +30,14 @@ class Daemon:
             if pid > 0:
                 # exit first parent
                 sys.exit(0)
-        except OSError, e:
+        except OSError as e:
             sys.stderr.write("fork #1 failed: %d (%s)\n" % (e.errno, e.strerror))
             sys.exit(1)
 
         # decouple from parent environment
         #os.chdir("/")
         os.setsid()
-        os.umask(0066)
+        os.umask(0o0066)
 
         # do second fork
         try:
@@ -45,7 +45,7 @@ class Daemon:
             if pid > 0:
                 # exit from second parent
                 sys.exit(0)
-        except OSError, e:
+        except OSError as e:
             sys.stderr.write("fork #2 failed: %d (%s)\n" % (e.errno, e.strerror))
             sys.exit(1)
 
@@ -120,13 +120,13 @@ class Daemon:
             else:
                 if os.path.exists(self.pidfile):
                     os.remove(self.pidfile)
-        except OSError, err:
+        except OSError as err:
             err = str(err)
             if err.find("No such process") > 0:
                 if os.path.exists(self.pidfile):
                     os.remove(self.pidfile)
             else:
-                print str(err)
+                print(err)
                 sys.exit(1)
 
     def restart(self):

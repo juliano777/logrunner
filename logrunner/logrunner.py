@@ -21,7 +21,7 @@
 #########################################################################
 
 import atexit
-import ConfigParser
+import configparser
 import gzip
 import os
 import signal
@@ -45,7 +45,7 @@ class LogRunner:
 			)
 		logging.info('Initializing LogRunner')
 
-		cfg = ConfigParser.SafeConfigParser()
+		cfg = configparser.SafeConfigParser()
 
 		if os.path.exists(config_file):
 			cfg.read(config_file)
@@ -74,16 +74,16 @@ class LogRunner:
 				'nosuid,noexec,nodev,mode=0755,size={}'.format(self.ramsize),
 				'logrunner',
 				self.logmount])
-		except Exception, e:
+		except Exception as e:
 			logging.error(e)
 			logging.critical('Creation of ramdisk/mount failed, exiting')
 			sys.exit(1)
 
 		if not os.path.isdir(self.path):
-			os.mkdir(self.path, 0754)
+			os.mkdir(self.path, mode=0o0754)
 
 		if not os.path.isdir(self.gzpath):
-			os.mkdir(self.gzpath, 0754)
+			os.mkdir(self.gzpath, mode=0o0754)
 
 		for item in os.listdir(self.path):
 			path = os.path.join(self.path, item)
@@ -141,7 +141,7 @@ class LogRunner:
 			logout.writelines(login)
 			logout.close()
 			login.close()
-		except Exception, e:
+		except Exception as e:
 			logging.error(e)
 			logging.error('Couldn\'t backup the file %s, whoops' % absin)
 		else:
