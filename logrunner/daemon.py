@@ -4,9 +4,6 @@ import time
 import atexit
 from signal import SIGTERM
 
-import pdb
-pdb.set_trace()
-
 
 class Daemon:
     '''
