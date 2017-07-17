@@ -54,7 +54,7 @@ class LogRunner:
 			cfg.add_section('ignore')
 
 			cfg.set('config', 'size', '1024')
-			cfg.set('config', 'ramsize', '16')
+			cfg.set('config', 'ramsize', '128')
 			cfg.set('config', 'path', '/var/log')
 			cfg.set('config', 'gzpath', '/var/logstore')
 			cfg.set('ignore', 'folders', 'journal,sa')
