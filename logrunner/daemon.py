@@ -33,7 +33,7 @@ class Daemon:
         http://www.erlenstar.demon.co.uk/unix/faq_2.html#SEC16
         '''
 
-    print(4) #===================================
+        print(4) #===================================
         try:
             pid = os.fork()
             if pid > 0:
