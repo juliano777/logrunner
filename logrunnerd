@@ -10,7 +10,6 @@
 import sys
 import getopt
 import os
-#import ConfigParser
 from importlib import reload
 
 from logrunner.daemon import Daemon
